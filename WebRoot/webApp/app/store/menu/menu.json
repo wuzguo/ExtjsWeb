@@ -1,0 +1,112 @@
+[
+	{
+		"actionPath": "",
+		"children": [
+			{
+				"actionPath": "",
+				"children": [],
+				"description": "",
+				"icon": "images/menu/yhmanage.png",
+				"id": 222,
+				"isValiDate": 0,
+				"jsCtrlClassFile": "user.Controller",
+				"jsPanelClassFile": "user.UserPanel",
+				"leaf": false,
+				"menuIds": "",
+				"menuName": "用户管理",
+				"openIcon": "images/menu/32/yhmanage.png",
+				"parantMenuID": 221,
+				"type": "jsClassFile"
+			}, {
+				"actionPath": "",
+				"children": [],
+				"description": "",
+				"icon": "images/menu/menumanage.png",
+				"id": 223,
+				"isValiDate": 0,
+				"jsCtrlClassFile": "menu.MenuController",
+				"jsPanelClassFile": "menu.MenuPanel",
+				"leaf": false,
+				"menuIds": "",
+				"menuName": "菜单管理",
+				"openIcon": "images/menu/32/menumanage.png",
+				"parantMenuID": 221,
+				"type": "jsClassFile"
+			}, {
+				"actionPath": "",
+				"children": [],
+				"description": "",
+				"icon": "images/menu/rolemanage.png",
+				"id": 224,
+				"isValiDate": 0,
+				"jsCtrlClassFile": "role.RoleController",
+				"jsPanelClassFile": "role.RolePanel",
+				"leaf": false,
+				"menuIds": "",
+				"menuName": "角色管理",
+				"openIcon": "images/menu/32/rolemanage.png",
+				"parantMenuID": 221,
+				"type": "jsClassFile"
+			}
+		],
+		"description": "",
+		"icon": "images/menu/root.png",
+		"id": 221,
+		"isValiDate": 0,
+		"jsCtrlClassFile": "",
+		"jsPanelClassFile": "",
+		"leaf": false,
+		"menuIds": "",
+		"menuName": "权限管理",
+		"openIcon": "images/menu/32/root.png",
+		"parantMenuID": 0,
+		"type": "firstMenu"
+	}, {
+		"actionPath": "",
+		"children": [
+			{
+				"actionPath": "",
+				"children": [],
+				"description": "请假申请",
+				"icon": "images/menu/bpexchange.png",
+				"id": 227,
+				"isValiDate": 0,
+				"jsCtrlClassFile": "webApp.qingjia.qingjiashenqing",
+				"jsPanelClassFile": "",
+				"leaf": false,
+				"menuIds": "",
+				"menuName": "请假申请",
+				"openIcon": "images/menu/32/bpexchange.png",
+				"parantMenuID": 226,
+				"type": "jsClassFile"
+			}, {
+				"actionPath": "http://www.baidu.com",
+				"children": [],
+				"description": "",
+				"icon": "images/menu/menu-item.png",
+				"id": 228,
+				"isValiDate": 0,
+				"jsCtrlClassFile": "",
+				"jsPanelClassFile": "",
+				"leaf": false,
+				"menuIds": "",
+				"menuName": "请假规则",
+				"openIcon": "images/menu/32/menu-item.png",
+				"parantMenuID": 226,
+				"type": "actionPath"
+			}
+		],
+		"description": "用于对公司人员的请假管理",
+		"icon": "images/menu/advmmange.png",
+		"id": 226,
+		"isValiDate": 0,
+		"jsCtrlClassFile": "",
+		"jsPanelClassFile": "",
+		"leaf": false,
+		"menuIds": "",
+		"menuName": "请假管理",
+		"openIcon": "images/menu/32/advmmange.png",
+		"parantMenuID": 0,
+		"type": "firstMenu"
+	}
+]

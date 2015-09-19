@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.extweb.dao.BaseDataDao">
+
+	<select id="getBaseDataListByType" parameterType="com.extweb.model.BaseData" resultType="com.extweb.model.BaseData">
+		SELECT *
+		from t_basedata
+		WHERE 1=1
+		<if test="type != null  and type != ''"> AND type = #{type} </if>
+		<if test="value != null  and value != ''"> AND value = #{value} </if>
+	</select>
+
+	<insert id="insert" parameterType="com.extweb.model.BaseData">
+		insert into t_basedata(name,value,type)
+		values (#{name},#{value},#{type})
+	</insert>
+
+</mapper>

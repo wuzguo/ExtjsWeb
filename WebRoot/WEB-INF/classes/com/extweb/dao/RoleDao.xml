@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.extweb.dao.RoleDao">
+
+	<select id="selectLimitCount" parameterType="com.extweb.model.RoleEty" resultType="java.lang.Integer">
+		SELECT count(1) from t_role
+		WHERE 1=1
+		<if test="id != null "> AND id=#{id}</if>
+		<if test="roleName != null  and roleName != ''"> AND roleName=#{roleName}</if>
+		<if test="describle != null  and describle != ''"> AND describle=#{describle}</if>
+	</select>
+
+	<select id="selectByLimit" parameterType="com.extweb.model.RoleEty" resultType="com.extweb.model.RoleEty">
+		SELECT sr.id, sr.roleName, sr.describle,
+		group_concat(srs.menuId SEPARATOR ',') as menuId
+		from t_role sr
+		left join
+		t_roleresource srs on sr.id = srs.roleId
+		WHERE 1=1
+		<if test="id != null "> AND id=#{id}</if>
+		<if test="roleName != null  and roleName != ''"> AND roleName=#{roleName}</if>
+		<if test="describle != null  and describle != ''"> AND describle=#{describle}</if>
+		GROUP BY sr.id
+		<if test="sort != null">order by ${sort} ${dir}</if>
+		<if test="limit != null">limit ${start}, ${limit}</if>
+	</select>
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM t_role WHERE id=#{id}
+	</delete>
+
+	<insert id="insert" parameterType="com.extweb.model.RoleEty">
+		insert into t_role(
+		roleName,describle)
+		values (
+		#{roleName},#{describle}
+		)
+	</insert>
+
+	<update id="updateById" parameterType="com.extweb.model.RoleEty">
+		UPDATE t_role SET
+		<if test="roleName != null  and roleName != ''"> roleName=#{roleName},</if>
+		<if test="describle != null  and describle != ''"> describle=#{describle},</if>
+		id = #{id}
+		WHERE id=#{id}
+	</update>
+	<insert id="insertMenu" parameterType="java.util.Map">
+		INSERT into t_roleresource (
+		roleId,menuId)
+		values (
+		#{roleId},#{menuId}
+		)
+	</insert>
+
+	<delete id="deleteMenu" parameterType="int">
+		DELETE FROM t_roleresource WHERE roleId=#{roleId}
+	</delete>
+
+	<select id="getUsingRole" parameterType="int" resultType="int">
+		SELECT count(1)
+		FROM t_userrole
+		WHERE roleId = #{roleId}
+	</select>
+</mapper>

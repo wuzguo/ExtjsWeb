@@ -1,0 +1,27 @@
+{
+	"total": 3,
+	"invdata": [
+		{
+			"id": 1717,
+			"name": "admin",
+			"sex": "女",
+			"status": "0",
+			"useremail": "449237205@qq.com",
+			"username": "admin"
+		}, {
+			"id": 1727,
+			"name": "adData",
+			"sex": "男",
+			"status": "0",
+			"useremail": "adData@youku.com",
+			"username": "广告数据"
+		}, {
+			"id": 1739,
+			"name": "aaa",
+			"sex": "?",
+			"status": "0",
+			"useremail": "aaa@qq.com",
+			"username": "aaaqqqq"
+		}
+	]
+}

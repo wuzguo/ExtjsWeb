@@ -1,0 +1,179 @@
+@CHARSET "utf-8";
+/*项目框架logo version css定义*/
+.app_logo {
+	height: 45px;
+	float: left;
+}
+
+.app_logo img {
+	height: 45px;
+}
+
+.add_logo_name {
+	height: 45px;
+	float: left;
+	line-height: 45px;
+	font-weight: bold;
+	font-size: 24px;
+	font-family: Verdana 粗体, 微软雅黑, 黑体, 宋体;
+}
+
+.app_version {
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	float: left;
+	margin-left: 14px;
+	color: #333333;
+	vertical-align: center;
+}
+
+.app_time {
+	float: right;
+	margin-top: -8px;
+}
+
+.app_thumb {
+	width: 80px;
+	height: 80px;
+}
+
+.app_thumb div img {
+	width: 32px;
+	height: 32px;
+	margin-left: 16px;
+}
+
+.app_small_img {
+	float: left;
+	text-indent: 4px;
+	height: 20px;
+	line-height: 22px;
+}
+
+.app_small_img img {
+	width: 20px;
+	height: 20px;
+	float: left;
+}
+
+.app_medinu_show {
+	width: 22px;
+	height: 22px;
+	margin-left: 9px;
+}
+/*End Width 项目框架logo version css定义*/
+.text_notice {
+	font-size: 11px;
+	font-weight: bold;
+}
+/*项目图标定义*/
+.app_logout {
+	background-image: url(../images/app/logout1.png ) !important;
+}
+
+.search {
+	background-image: url(../images/app/search.png ) !important;
+}
+
+.add {
+	background-image: url(../images/app/add.png ) !important;
+}
+
+.delete {
+	background-image: url(../images/app/delete.png ) !important;
+}
+
+.export {
+	background-image: url(../images/app/logout.png ) !important;
+}
+
+.confirm {
+	background-image: url(../images/app/confirm.png ) !important;
+}
+
+.show {
+	background-image: url(../images/app/show.png ) !important;
+}
+
+.edit {
+	background-image: url(../images/app/edit.png ) !important;
+}
+
+.undo {
+	background-image: url(../images/app/undo.png ) !important;
+}
+
+.cancel {
+	background-image: url(../images/app/cancel_.png ) !important;
+}
+
+.getCode {
+	background-image: url(../images/app/code.png ) !important;
+}
+
+.getQrCode {
+	background-image: url(../images/app/qr_code.png ) !important;
+}
+
+.down {
+	background-image: url(../images/app/logout.png ) !important;
+}
+
+.close_all {
+	background-image: url(../images/app/tab_close_all.png ) !important;
+}
+
+.close_this {
+	background-image: url(../images/app/tab_close_this.png ) !important;
+}
+
+.close_other {
+	background-image: url(../images/app/tab_close_other.png ) !important;
+}
+
+.fullscreen {
+	background-image: url(../images/app/fullscreen.png ) !important;
+}
+
+.fullscreen_exit {
+	background-image: url(../images/app/fullscreen_exit.png ) !important;
+}
+/*End width 项目图标定义*/
+.no_overflow {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.msg .x-box-mc {
+	font-size: 14px;
+}
+
+#msg-div {
+	position: absolute;
+	right: 2px;
+	text-align: center;
+	bottom: 24px;
+	margin: 0 auto;
+	z-index: 20000;
+}
+
+#msg-div .msg {
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	background: #157fcb;
+	border: 2px solid #ccc;
+	margin-top: 2px;
+	padding: 10px 15px;
+	color: #e9fdf7;
+}
+
+#msg-div .msg h3 {
+	margin: 0 0 8px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#msg-div .msg p {
+	margin: 0;
+}

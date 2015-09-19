@@ -1,0 +1,36 @@
+@CHARSET "utf-8";
+/*登陆页面CSS文件*/
+.text-user {
+	background: url('../images/login/user_.png') no-repeat !important;
+	padding: 2px 0px 0px 21px;
+}
+
+.text-lock {
+	background: url('../images/login/password_.png') no-repeat !important;
+	padding: 2px 0px 0px 21px;
+}
+
+.login {
+	background-image: url('../images/login/key_.png' ) !important;
+}
+
+.reset {
+	background-image: url('../images/login/undo.png') !important;
+}
+
+.logo_font {
+	font-size: 20px;
+	line-height: 42px;
+	font-weight: bold;
+}
+
+#checkCode {
+	float: left;
+	padding: 2px 0px 0px 30px;
+}
+
+.x-form-code {
+	cursor: pointer;
+	float: left;
+	padding: 2px 0px 0px 4px;
+}

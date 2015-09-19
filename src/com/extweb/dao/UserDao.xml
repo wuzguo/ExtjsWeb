@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.extweb.dao.UserDao">
+	
+		
+	<select id="selectLimitCount" parameterType="com.extweb.model.UserEty" resultType="java.lang.Integer">
+		SELECT count(1) from t_user
+		WHERE 1=1 
+		<if test="id != null "> AND id=#{id}</if>
+		<if test="username != null  and username != ''"> AND username=#{username}</if>
+		<if test="password != null  and password != ''"> AND password=#{password}</if>
+		<if test="name != null  and name != ''"> AND  name like '%${name}%' </if>
+		<if test="useremail != null  and useremail != ''"> AND email=#{useremail}</if>
+		<if test="usertype != null  and usertype != ''"> AND usertype=#{usertype}</if>
+	</select>
+
+	<select id="selectByLimit" parameterType="com.extweb.model.UserEty" resultType="com.extweb.model.UserEty">
+		SELECT u.id, u.name, u.username,u.description,u.userphone,u.password,u.sex, u.useremail, u.status,
+		group_concat(s.roleid SEPARATOR ',') as roleids
+		from t_user u 
+		left join  t_userrole s  on u.id = s.userid
+		WHERE 1=1 
+		<if test="id != null "> AND id=#{id}</if>
+	    <if test="username != null  and username != ''"> AND username=#{username}</if>
+		<if test="password != null  and password != ''"> AND password=#{password}</if>
+		<if test="name != null  and name != ''">  AND  name like '%${name}%'</if>
+		<if test="useremail != null  and useremail != ''"> AND email=#{useremail}</if>
+		<if test="usertype != null  and usertype != ''"> AND usertype=#{usertype}</if>
+		<if test="status != null  and status != ''"> AND status=#{status}</if>
+		GROUP BY u.id
+		<if test="sort != null">order by ${sort} ${dir}</if>
+		<if test="limit != null">limit ${start}, ${limit}</if>
+	</select>
+	
+	<select id="selectById" parameterType="int" resultType="com.extweb.model.UserEty">
+		select * from t_user where id=#{id}
+	</select>
+	<select id="selectUserByName" parameterType="String" resultType="com.extweb.model.UserEty">
+		select * from t_user where name=#{name}
+	</select>
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM t_user WHERE id=#{id}
+	</delete>
+	
+    <insert id="insert" parameterType="com.extweb.model.UserEty"  >
+         insert into t_user(
+			username,password,name,useremail,description,userphone,sex,status,insert_date)
+		values (
+			#{username},#{password},#{name},#{useremail},#{description},#{userphone},#{sex},#{status},#{insert_date}
+		)
+    </insert>
+    
+    <update id="updateById" parameterType="com.extweb.model.UserEty">
+		UPDATE t_user SET
+		<if test="username != null   and username != '' ">username=#{username},</if>
+		<if test="password != null  and password != ''">password=#{password},</if>
+		<if test="name != null  and name != ''">name=#{name},</if>
+		<if test="useremail != null  and useremail != ''">useremail=#{useremail},</if>
+		<if test="description != null  and description != ''">description=#{description},</if>
+		<if test="userphone != null  and userphone != ''">userphone=#{userphone},</if>
+		<if test="sex != null  and sex != ''">sex=#{sex},</if>
+		<if test="status != null  and status != ''">status=#{status},</if>
+		id=#{id}
+		WHERE
+		 id=#{id}
+	</update>
+	
+	 <insert id="insertRole" parameterType="java.util.Map"  >
+         INSERT into t_userrole (
+			userid,roleid)
+		values (
+			#{userId},#{roleId}
+		)
+    </insert>
+    
+	<delete id="deleteRole" parameterType="int">
+		DELETE FROM t_userrole WHERE userid=#{userid}
+	</delete> 
+	<select id="selectUserMenuMap" parameterType="int"  resultType="com.extweb.model.MenuEty" >
+		SELECT sm.parantMenuID,GROUP_CONCAT(DISTINCT sr.menuId ORDER BY sm.id ASC SEPARATOR ',') as menuIds
+		FROM t_roleresource sr 
+		LEFT join t_menu sm 
+		ON sr.menuId = sm.id
+		WHERE roleId in (
+		    SELECT roleId FROM t_userrole WHERE userid = #{userid}
+		) 
+		AND sm.isValiDate = 0 AND sm.parantMenuID != 0 
+		GROUP BY sm.parantMenuID
+	</select>
+</mapper>

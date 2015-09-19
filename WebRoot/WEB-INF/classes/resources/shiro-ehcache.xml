@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="false" monitoring="autodetect" dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<transactionManagerLookup class="net.sf.ehcache.transaction.manager.DefaultTransactionManagerLookup"
+		properties="jndiName=java:/TransactionManager" propertySeparator=":" />
+
+	<cacheManagerEventListenerFactory class="" properties="" />
+
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic,
+		multicastGroupAddress=230.0.0.1,
+		multicastGroupPort=4446, timeToLive=1"
+		propertySeparator="," />
+
+	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+
+	<defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120"
+		overflowToDisk="true" diskSpoolBufferSizeMB="30" maxElementsOnDisk="10000000" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="sampleCache1" maxElementsInMemory="10000" maxElementsOnDisk="1000" eternal="false" overflowToDisk="true"
+		diskSpoolBufferSizeMB="20" timeToIdleSeconds="300" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off" />
+
+	<cache name="sampleCache2" maxElementsInMemory="1000" eternal="true" overflowToDisk="false"
+		memoryStoreEvictionPolicy="FIFO" />
+
+	<cache name="sampleCache3" maxElementsInMemory="500" eternal="false" overflowToDisk="true" timeToIdleSeconds="300"
+		timeToLiveSeconds="600" diskPersistent="true" diskExpiryThreadIntervalSeconds="1" memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="sampleDistributedCache1" maxElementsInMemory="10" eternal="false" timeToIdleSeconds="100"
+		timeToLiveSeconds="100" overflowToDisk="false">
+
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory" />
+	</cache>
+
+	<cache name="sampleDistributedCache2" maxElementsInMemory="10" eternal="false" timeToIdleSeconds="100"
+		timeToLiveSeconds="100" overflowToDisk="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicatePuts=false,
+			replicatePutsViaCopy=false, replicateUpdates=true,
+			replicateUpdatesViaCopy=true, replicateRemovals=false" />
+	</cache>
+
+	<cache name="sample/DistributedCache3" maxElementsInMemory="10" eternal="false" timeToIdleSeconds="100"
+		timeToLiveSeconds="100" overflowToDisk="true">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="asynchronousReplicationIntervalMillis=200" />
+	</cache>
+
+</ehcache>

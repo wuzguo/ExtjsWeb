@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>date.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<link rel="stylesheet" type="text/css" href="/resource/ext4.1rc1/resources/css/ext-all.css">
+    
+     <script type="text/javascript" src="/resource/ext4.1rc1/ext-all-debug.js"></script>
+	<script type="text/javascript" src="/resource/ext4.1rc1/locale/ext-lang-zh_CN.js"></script>
+    
+    <script type="text/javascript" src="DateTimePicker.js"></script>
+    <script type="text/javascript" src="DateTime.js"></script>
+   
+    <script type="text/javascript">
+    	
+		
+		Ext.onReady(function(){
+			var form = Ext.create('Ext.form.Panel', {
+				renderTo: Ext.getBody(),
+				title: '时间控件',
+				height : 500,
+				layout : 'hbox',
+				defaults : {
+						labelAlign : 'right'
+					},
+				tbar : [{text : '数值',handler : function(btn){
+						var date = btn.up('form').query('datetimefield');
+						var p = btn.up('form').down('panel');
+						var msg = '';
+						Ext.each(date,function(d){
+							msg+=d.fieldLabel+' : '+ d.getSubmitValue()+'</br>';
+						});
+						p.update(msg);
+					}},{text : '赋值',handler : function(btn){
+							var date = btn.up('form').query('datetimefield');	
+							date[0].setValue('2011-01-01');
+							date[1].setValue('2011-01');
+							date[2].setValue('2011-01-03 12:23:32');					
+
+						}}],
+				items : [
+					{
+						fieldLabel : '日期',
+						xtype : 'datetimefield',
+						dateType : 'date'
+					},
+					{
+						fieldLabel : '月份',
+						xtype : 'datetimefield',
+						dateType : 'month'
+					},
+					{
+
+						fieldLabel : '时分秒',
+						xtype : 'datetimefield',
+						dateType : 'datetime'
+					},
+					{
+						xtype:'panel',
+						ref : 'value'
+					}
+				]
+			});
+		});
+    </script>
+	
+  </head>
+  
+  <body>
+  </body>
+</html>

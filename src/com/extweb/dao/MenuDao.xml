@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.extweb.dao.MenuDao">
+	<select id="getListByParentId" resultType="com.extweb.model.MenuEty" parameterType="int">
+		select * from t_menu where
+		parantMenuID=#{id} order by id, menuName;
+	</select>
+	<select id="selectById" resultType="com.extweb.model.MenuEty" parameterType="int">
+		select * from t_menu where id=#{id}
+		order by id, menuName;
+	</select>
+	<select id="selectLimitCount" parameterType="com.extweb.model.MenuEty" resultType="java.lang.Integer">
+		SELECT count(1) from t_menu
+	</select>
+
+	<select id="selectByLimit" parameterType="com.extweb.model.MenuEty" resultType="com.extweb.model.MenuEty">
+		SELECT * FROM t_menu
+		WHERE 1=1
+		<if test="sort != null">order by ${sort} ${dir}</if>
+		<if test="limit != null">limit ${start}, ${limit}</if>
+	</select>
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM t_menu WHERE id=#{id}
+	</delete>
+
+	<insert id="insert" parameterType="com.extweb.model.MenuEty">
+		insert into t_menu(
+		menuName,parantMenuID,icon,openIcon,type,isValiDate,description,jsCtrlClassFile,jsPanelClassFile,actionPath
+		)
+		values (
+		#{menuName},#{parantMenuID},#{icon},#{openIcon},#{type},#{isValiDate},#{description},#{jsCtrlClassFile},#{jsPanelClassFile},#{actionPath}
+		)
+	</insert>
+
+	<update id="updateById" parameterType="com.extweb.model.MenuEty">
+		UPDATE t_menu SET
+		<if test="menuName != null  and menuName != ''"> menuName=#{menuName},</if>
+		<if test="parantMenuID != null  and parantMenuID != ''"> parantMenuID=#{parantMenuID},</if>
+		<if test="icon != null  and icon != ''"> icon=#{icon},</if>
+		<if test="openIcon != null  and openIcon != ''"> openIcon=#{openIcon},</if>
+		<if test="type != null  and type != ''"> type=#{type},</if>
+		<if test="isValiDate != null  and isValiDate != ''"> isValiDate=#{isValiDate},</if>
+		<if test="description != null  and description != ''"> description=#{description},</if>
+		<if test="jsCtrlClassFile != null "> jsCtrlClassFile=#{jsCtrlClassFile},</if>
+		<if test="jsPanelClassFile != null "> jsPanelClassFile=#{jsPanelClassFile},</if>
+		<if test="actionPath != null  "> actionPath=#{actionPath},</if>
+		id=#{id}
+		WHERE
+		id=#{id}
+	</update>
+
+	<select id="getUsingMenu" parameterType="int" resultType="int">
+		SELECT count(1)
+		FROM t_roleresource
+		WHERE menuId =
+		#{menuId}
+	</select>
+</mapper>
